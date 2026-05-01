@@ -1,0 +1,43 @@
+* {
+  /* border: 1px solid black; */
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main > h1 {
+  margin: 20px 0px;
+}
+
+section {
+  width: 100%;
+  max-width: 800px;
+  background-color: rgb(209, 209, 209, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+
+  margin: 10px 0px;
+  box-sizing: border-box;
+}
+
+.component-name {
+  font-size: 1.4rem;
+  margin: 20px 0px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+.component-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  height: 200px;
+  margin: 0px 0px 20px 0px;
+  background-color: white;
+  border: 1px dotted rgb(209, 209, 209);
+}

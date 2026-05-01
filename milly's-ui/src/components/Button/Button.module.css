@@ -1,0 +1,57 @@
+.base {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  box-shadow:
+    0.5px 0.5px 2px 0.5px var(--shadow),
+    1px 1px 2px 1px var(--shadow) inset;
+  
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out 0s;
+}
+.small {
+  font-size: 12px;
+}
+.medium {
+  font-size: 16px;
+}
+.large {
+  font-size: 20px;
+}
+.primary {
+  color: rgb(24, 24, 24);
+  border: 1px solid var(--primary-border-color);
+  background-color: var(--primary-background-color);
+  backdrop-filter: blur(3px);
+}
+
+.primary:hover {
+  box-shadow: none;
+  background-color: var(--primary-background-color-hover);
+}
+
+.success {
+  color: rgb(0, 18, 0);
+  background-color: var(--success-background-color);
+  border: 1px solid var(--success-border-color);
+  backdrop-filter: blur(3px);
+}
+
+.success:hover {
+  box-shadow: none;
+  background-color: var(--success-background-color-hover);
+}
+
+.danger {
+  color: var(--danger-text-color);
+  background-color: var(--danger-background-color);
+  border: 1px solid var(--danger-border-color);
+  backdrop-filter: blur(3px);
+}
+
+.danger:hover {
+  box-shadow: none;
+  background-color: var(--danger-background-color-hover);
+}

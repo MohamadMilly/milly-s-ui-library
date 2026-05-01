@@ -1,0 +1,46 @@
+.base {
+  resize: none;
+  font-family: inherit;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+  box-shadow: 0.5px 0.5px 5px 0.5px var(--shadow);
+  margin: 5px;
+}
+.small {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  width: 200px;
+  min-height: 50px;
+  font-size: 14px;
+}
+.medium {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 275px;
+  min-height: 75px;
+  font-size: 16px;
+}
+.large {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+  min-height: 100px;
+  font-size: 18px;
+}
+.inputLike {
+  field-sizing: content !important;
+  min-height: 1lh !important;
+  border-radius: 10px;
+}
+.primary {
+  border: 1px solid var(--primary-border-color);
+}
+.primary:focus {
+  outline: 1px solid var(--primary-border-color);
+  outline-offset: 5px;
+  box-shadow: none;
+}
+.primary:hover {
+  background-color: rgb(250, 250, 250);
+}

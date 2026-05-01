@@ -1,0 +1,21 @@
+:root {
+  font-family: sans-serif;
+  --text-size: 1.2rem;
+  --shadow: rgba(100, 100, 100, 0.05);
+  --shadow-dark: rgba(100, 100, 100, 0.5);
+  --primary-border-color: rgb(220, 220, 220);
+  --primary-background-color: rgba(255, 255, 255, 0.3);
+  --primary-background-color-hover: rgba(255, 255, 255, 0.5);
+  --success-background-color: rgba(42, 212, 42, 0.3);
+  --success-background-color-hover: rgba(42, 212, 42, 0.5);
+  --success-border-color: rgb(33, 220, 33);
+  --danger-text-color: rgb(90, 0, 0);
+  --danger-border-color: rgb(200, 30, 30);
+  --danger-background-color: rgba(255, 50, 50, 0.3);
+  --danger-background-color-hover: rgba(255, 50, 50, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
