@@ -14,21 +14,29 @@ function App(): JSX.Element {
         variants={["primary", "danger", "success"]}
         name="Button"
       >
-        <ButtonContainer onClick={() => alert("I have been clicked !")}>
+        <ButtonContainer
+          style={{}}
+          onClick={() => alert("I have been clicked !")}
+        >
           Download
         </ButtonContainer>
       </ComponentSection>
 
       <ComponentSection variants={["primary"]} name="Input">
-        <InputContainer type="text" />
+        <InputContainer style={{}} onChange={() => {}} value="" type="text" />
       </ComponentSection>
 
       <ComponentSection variants={["primary"]} name="Textarea">
-        <TextareaContainer style={{ maxHeight: "120px" }} />
+        <TextareaContainer
+          onChange={() => {}}
+          inputLike={false}
+          value=""
+          style={{ maxHeight: "120px" }}
+        />
       </ComponentSection>
 
       <ComponentSection variants={["primary"]} name="Dropdown menu">
-        <DropdownMenu title="menu">
+        <DropdownMenu toggleButtonStyle={{}} menuStyle={{}} title="menu">
           <ul
             style={{
               listStyle: "none",
