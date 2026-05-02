@@ -1,33 +1,90 @@
-import { useState, type ChangeEvent, type JSX, type ReactNode } from "react";
 import {
-  ComponentSectionContext,
-  type ComponentSectionContextType,
-} from "../contexts/componentSectioncontext";
+  useMemo,
+  useState,
+  type ChangeEvent,
+  type JSX,
+  type ReactNode,
+} from "react";
 
-type componentSize = "small" | "medium" | "large";
+import { ComponentSectionContext } from "../contexts/componentSectioncontext";
+
+export type ComponentProperty<T = unknown> = {
+  name: string;
+  values: T[];
+  value: T;
+  interfaceType: "select" | "checkbox" | "radio";
+};
+
+function Controls({
+  handlePropertyChange,
+  config,
+}: {
+  handlePropertyChange: (
+    e: ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+    name: string,
+  ) => void;
+  config: ComponentProperty[];
+}) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        gap: "5px",
+      }}
+    >
+      {config.map((property: ComponentProperty) => {
+        switch (property.interfaceType) {
+          case "select":
+            return (
+              <select
+                value={property.value as number | string}
+                onChange={(
+                  e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+                ): void => handlePropertyChange(e, property.name)}
+              >
+                {property.values.map((value) => {
+                  return (
+                    <option value={value as number | string}>
+                      {value as number | string}
+                    </option>
+                  );
+                })}
+              </select>
+            );
+        }
+      })}
+    </div>
+  );
+}
 
 export function ComponentSection({
   name,
   children,
-  variants,
+  config,
 }: {
   name: string;
   children: ReactNode;
-  variants: string[];
+  config: ComponentProperty[];
 }): JSX.Element {
-  const [variant, setVariant] = useState<string>("primary");
-  const [size, setSize] = useState<componentSize>("medium");
+  const initialProperties = useMemo(() => {
+    const propertiesEntries = config.map((property: ComponentProperty) => {
+      return [property.name, property.value];
+    });
+    return Object.fromEntries(propertiesEntries);
+  }, [config]);
+  const [properties, setProperties] = useState<{ [key: string]: unknown }>(
+    initialProperties,
+  );
 
-  const handleVariantChange = (e: ChangeEvent<HTMLSelectElement>): void => {
-    setVariant(e.target.value);
+  const handlePropertyChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    name: string,
+  ): void => {
+    setProperties((prev) => ({ ...prev, [name]: e.target.value }));
   };
 
-  const handleSizeChange = (e: ChangeEvent<HTMLSelectElement>): void => {
-    setSize(e.target.value as componentSize);
-  };
-  const contextValue: ComponentSectionContextType = {
-    variant,
-    size,
+  const contextValue = {
+    properties,
   };
   return (
     <ComponentSectionContext value={contextValue}>
@@ -40,32 +97,10 @@ export function ComponentSection({
           }}
         >
           <h2 className="component-name">{name}</h2>
-          <div
-            style={{
-              display: "flex",
-              gap: "5px",
-            }}
-          >
-            <select onChange={handleVariantChange} value={variant}>
-              {variants.map((variant) => {
-                return (
-                  <option
-                    style={{
-                      textTransform: "capitalize",
-                    }}
-                    value={variant}
-                  >
-                    {variant}
-                  </option>
-                );
-              })}
-            </select>
-            <select value={size} onChange={handleSizeChange}>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-          </div>
+          <Controls
+            handlePropertyChange={handlePropertyChange}
+            config={config}
+          />
         </div>
         <div className="component-container">{children}</div>
       </section>

@@ -1,19 +1,64 @@
 import type { JSX } from "react";
 import "./App.css";
 import { ButtonContainer } from "./components/Button/Button";
-import { ComponentSection } from "./components/ComponentSection";
+import {
+  ComponentSection,
+  type ComponentProperty,
+} from "./components/ComponentSection";
 import { InputContainer } from "./components/Input/Input";
 import { TextareaContainer } from "./components/Textarea/Textarea";
 import { DropdownMenu } from "./components/Dropdown_menu/Dropdown_menu";
+
+const buttonConfig: ComponentProperty[] = [
+  {
+    name: "variant",
+    values: ["primary", "danger", "success"],
+    value: "primary",
+    interfaceType: "select",
+  },
+  {
+    name: "size",
+    values: ["small", "medium", "large"],
+    value: "medium",
+    interfaceType: "select",
+  },
+];
+
+const inputConfig: ComponentProperty[] = [
+  {
+    name: "size",
+    values: ["small", "medium", "large"],
+    value: "medium",
+    interfaceType: "select",
+  },
+  {
+    name: "variant",
+    values: ["primary"],
+    value: "primary",
+    interfaceType: "select",
+  },
+];
+
+const TextareaConfig: ComponentProperty[] = [
+  {
+    name: "size",
+    values: ["small", "medium", "large"],
+    value: "medium",
+    interfaceType: "select",
+  },
+  {
+    name: "variant",
+    values: ["primary"],
+    value: "primary",
+    interfaceType: "select",
+  },
+];
 
 function App(): JSX.Element {
   return (
     <main>
       <h1>Welcome to my UI library</h1>
-      <ComponentSection
-        variants={["primary", "danger", "success"]}
-        name="Button"
-      >
+      <ComponentSection config={buttonConfig} name="Button">
         <ButtonContainer
           style={{}}
           onClick={() => alert("I have been clicked !")}
@@ -22,11 +67,11 @@ function App(): JSX.Element {
         </ButtonContainer>
       </ComponentSection>
 
-      <ComponentSection variants={["primary"]} name="Input">
+      <ComponentSection config={inputConfig} name="Input">
         <InputContainer style={{}} onChange={() => {}} value="" type="text" />
       </ComponentSection>
 
-      <ComponentSection variants={["primary"]} name="Textarea">
+      <ComponentSection config={TextareaConfig} name="Textarea">
         <TextareaContainer
           onChange={() => {}}
           inputLike={false}
@@ -35,7 +80,7 @@ function App(): JSX.Element {
         />
       </ComponentSection>
 
-      <ComponentSection variants={["primary"]} name="Dropdown menu">
+      <ComponentSection config={[]} name="Dropdown menu">
         <DropdownMenu toggleButtonStyle={{}} menuStyle={{}} title="menu">
           <ul
             style={{

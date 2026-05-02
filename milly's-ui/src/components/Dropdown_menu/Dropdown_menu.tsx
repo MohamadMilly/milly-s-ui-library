@@ -52,7 +52,7 @@ export function DropdownMenu({
         size={"medium"}
         onClick={handleToggleMenu}
         variant="primary"
-      > 
+      >  
         <span>{title}</span>
         {open ? <ArrowUp size={16} /> : <ArrowDown size={16} />}
       </Button>

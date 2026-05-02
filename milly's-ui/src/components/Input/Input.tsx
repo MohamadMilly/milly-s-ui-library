@@ -19,7 +19,9 @@ type InputProps = {
 export function InputContainer(
   props: Omit<InputProps, "variant" | "size">,
 ): JSX.Element {
-  const { variant, size } = useContext(ComponentSectionContext);
+  const { properties } = useContext(ComponentSectionContext);
+  const variant = properties["variant"] as string ?? "primary";
+  const size = properties["size"] as string ?? "medium";
   return <Input {...props} variant={variant} size={size} />;
 }
 

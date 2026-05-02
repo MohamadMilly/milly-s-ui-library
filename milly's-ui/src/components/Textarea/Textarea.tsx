@@ -20,7 +20,9 @@ type TextareaProps = {
 export function TextareaContainer(
   props: Omit<TextareaProps, "variant" | "size">,
 ) {
-  const { variant, size } = useContext(ComponentSectionContext);
+  const { properties } = useContext(ComponentSectionContext);
+  const variant = (properties["variant"] as string) ?? "primary";
+  const size = (properties["size"] as string) ?? "medium";
   return <Textarea {...props} variant={variant} size={size} />;
 }
 
